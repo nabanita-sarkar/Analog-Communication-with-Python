@@ -12,11 +12,11 @@ f_m = float(input('Enter message frquency: '))
 modulation_index = float(input('Enter modulation index: '))
 #print(modulation_index)
 
-t = np.arange(100000.0)/100000
-carrier=A_c*np.cos(2*np.pi*f_c*t)
-modulator=A_m*np.cos(2*np.pi*f_m*t)
+t = np.linspace(0, 1, 1000)
+carrier = A_c*np.cos(2*np.pi*f_c*t)
+modulator = A_m*np.cos(2*np.pi*f_m*t)
 
-product=A_c*(1+modulation_index*np.cos(2*np.pi*f_m*t))*np.cos(2*np.pi*f_c*t)
+product = A_c*(1+modulation_index*np.cos(2*np.pi*f_m*t))*np.cos(2*np.pi*f_c*t)
 
 plt.subplot(3,1,1)
 plt.title('Amplitude Modulation')
@@ -32,7 +32,7 @@ plt.xlabel('Carrier signal')
 plt.subplot(3,1,3)
 plt.plot(product, color="purple")
 plt.ylabel('Amplitude')
-plt.xlabel('Output signal')
+plt.xlabel('AM signal')
 plt.subplots_adjust(hspace=1)
 
 plt.rc('font', size=15)
