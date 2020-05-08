@@ -14,7 +14,7 @@ f_c = st.sidebar.slider('Carrier Frequency', 0, 100, 80)
 modulation_index = st.sidebar.slider('Modulation Index', 0.0, 1.0, 0.5)
 
 t = np.linspace(0, 1, 1000)
-
+c_t = np.linspace(0, 1, 500)
 
 carrier = A_c*np.cos(2*np.pi*f_c*t)
 carrier2 = A_c*np.sin(2*np.pi*f_c*t)
@@ -26,18 +26,20 @@ product = p1 + p2
 
 f = make_subplots(rows=4, cols=1)
 f.add_trace(
-    go.Line(x=t, y=message1), row=1, col=1
+    go.Line(x=t, y=message1, name="Message Signal 1"), row=1, col=1
 )
 
 f.add_trace(
-    go.Line(x=t, y=message2), row=2, col=1
+    go.Line(x=t, y=message2, name="Message Signal 2"), row=2, col=1
 )
 
 f.add_trace(
-    go.Line(x=t, y=carrier), row=3, col=1
+    go.Line(x=c_t, y=carrier, name="Carrier Signal"), row=3, col=1
 )
 
 f.add_trace(
-    go.Line(x=t, y=product), row=4, col=1
+    go.Line(x=c_t, y=product, name="Generated QAM"), row=4, col=1
 )
+f.update_layout(width=800, height=600)
+
 st.plotly_chart(f)
