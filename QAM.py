@@ -4,7 +4,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.title('QAM Modulation')
+st.title('QAM Generation')
+st.text('Nabanita Sarkar')
 
 A_m = st.sidebar.slider('Message Amplitude', 0, 10, 5)
 f_m1 = st.sidebar.slider('Message1 Frequency', 0.0, 5.0, 2.0)
